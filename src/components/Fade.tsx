@@ -1,5 +1,5 @@
-import React, { FC, PropsWithChildren, useEffect, useRef } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import React, { FC, PropsWithChildren, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useScroll, useTransform } from 'framer-motion';
 
 const Fade: FC<PropsWithChildren> = ({ children }) => {
@@ -8,7 +8,7 @@ const Fade: FC<PropsWithChildren> = ({ children }) => {
 
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.75, 1],
+    [0, 0.33, 0.66, 1],
     [0, 1, 1, 0]
   );
 

@@ -7,10 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      keyframes: {
+        'dev': {
+          "0%": { color: '#ff0000' },
+          "33%": { color: '#ff00b4' },
+          "66%": { color: '#0064c8' },
+        },
+      },
+      animation: {
+        'dev': 'dev 5s ease alternate infinite',
       },
     },
   },
