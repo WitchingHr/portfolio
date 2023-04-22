@@ -16,12 +16,23 @@
   }
 }
 
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: black;
+}
+
+.section-container {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 8%;
+}
+
+.perspective {
+  perspective: 320px;
 }
