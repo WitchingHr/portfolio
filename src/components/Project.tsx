@@ -10,8 +10,6 @@ const variants = {
 };
 
 interface ProjectProps {
-  scrollRef: React.RefObject<HTMLDivElement>;
-	height: number | undefined;
 	delay: number;
 	title: string;
 	subtitle: string;
@@ -24,8 +22,6 @@ interface ProjectProps {
 }
 
 const Project: FC<PropsWithChildren<ProjectProps>> = ({
-  scrollRef,
-	height,
 	delay,
 	title,
 	subtitle,
@@ -46,8 +42,8 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 			variants={variants}
 			transition={{ duration: 1, delay: delay }}
 		>
-			<div ref={scrollRef} className={`flex flex-col snap-start`} style={{height: `${height}px`}}>
-				<div className="mt-6">
+			<div className="flex flex-col gap-[20%] mt-[88px]">
+				<div>
 					<h1 className="text-3xl font-semibold text-left gradient">{title}</h1>
 					<h2 className="text-2xl text-left text-white text-opacity-50">
 						{subtitle}

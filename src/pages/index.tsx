@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
-import Header from '@/components/Header'
-import Section from '@/components/Section'
-import HoverHeading from '@/components/HoverHeading';
-import Portfolio from '@/components/Portfolio';
+import Header from '../components/Header';
+import Section from '../components/Section'
+import HoverHeading from '../components/HoverHeading';
+import Portfolio from '../components/Portfolio';
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);

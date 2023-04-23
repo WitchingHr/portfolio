@@ -187,6 +187,19 @@ body {
   animation: gradient-infinite 8s linear infinite;
 }
 
+.hr-gradient {
+  background: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 1) 12.5%,
+    rgba(255, 0, 180, 1) 37.5%,
+    rgba(0, 100, 200, 1) 62.5%,
+    rgba(255, 0, 180, 1) 87.5%,
+    rgba(255, 0, 0, 1)
+  );
+  background-size: 200%;
+  animation: gradient-infinite 4s linear infinite;
+}
+
 .header-gradient {
   background: linear-gradient(180deg, black, transparent);
 }
