@@ -8,14 +8,8 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        'dev': {
-          "0%": { color: '#ff0000' },
-          "33%": { color: '#ff00b4' },
-          "66%": { color: '#0064c8' },
-        },
       },
       animation: {
-        'dev': 'dev 5s ease alternate infinite',
       },
     },
   },

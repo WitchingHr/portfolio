@@ -1,14 +1,21 @@
 import React, { FC, PropsWithChildren } from "react";
+
+// Components:
 import Fade from "./Fade";
 
-interface SectionProps {
+// PropTypes:
+interface HeadingSectionProps {
 	scrollRef: React.RefObject<HTMLElement>;
 }
 
-const Section: FC<PropsWithChildren<SectionProps>> = ({
+// Section component:
+// main section component
+const HeadingSection: FC<PropsWithChildren<HeadingSectionProps>> = ({
 	scrollRef,
 	children,
 }) => {
+
+	// Render:
 	return (
 		<section
 			ref={scrollRef}
@@ -19,4 +26,4 @@ const Section: FC<PropsWithChildren<SectionProps>> = ({
 	);
 };
 
-export default Section;
+export default HeadingSection;

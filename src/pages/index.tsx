@@ -1,51 +1,61 @@
 import React, { useState, useRef } from 'react';
-import Header from '../components/Header';
-import Section from '../components/Section'
-import HoverHeading from '../components/HoverHeading';
-import Portfolio from '../components/Portfolio';
 
+// Components:
+import Header from '../components/Header/Header';
+import HeadingSection from '../components/sections/heading/HeadingSection'
+import HoverHeading from '../components/sections/heading/HoverHeading';
+import Portfolio from '../components/Portfolio/Portfolio';
+
+// Home component:
 export default function Home() {
+
+  // Scroll refs:
   const heroRef = useRef<HTMLElement>(null);
   const portfolioRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-
   const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
+  // Handling view states:
   const [viewPortfolio, setViewPortfolio] = useState<boolean>(false);
   const [viewContact, setViewContact] = useState<boolean>(false);
-
   const handleViewPortfolio = () => {
     setViewPortfolio(true);
   }
-
   const handleViewContact = () => {
     setViewContact(true);
   }
 
+  // Render:
   return (
     <>
       <Header heroRef={heroRef} portfolioRef={portfolioRef} contactRef={contactRef} fn={scrollToRef} />
+
       <main>
-        <Section scrollRef={heroRef}>
+        {/* Hero: */}
+        <HeadingSection scrollRef={heroRef}>
           <h1 className="text-6xl font-bold">
             Matt Thomas
           </h1>
           <h2 className="text-2xl gradient">Full Stack Developer</h2>
-        </Section>
+        </HeadingSection>
+
+        {/* Portfolio: */}
         {viewPortfolio === false ? (
-          <Section scrollRef={portfolioRef}>
-            <HoverHeading sub="Showcasing My Creative Journey" fn={handleViewPortfolio}>Portfolio</HoverHeading>
-          </Section>
+          <HeadingSection scrollRef={portfolioRef}>
+            <HoverHeading sub="Showcasing My Creative Journey" setViewSection={handleViewPortfolio}>Portfolio</HoverHeading>
+          </HeadingSection>
         ):(
           <Portfolio scrollRef={portfolioRef} />
         )}
-        <Section scrollRef={contactRef}>
-          <HoverHeading sub="Get in Touch for Professional Opportunities" fn={handleViewContact}>Contact</HoverHeading>
-        </Section>
+
+        {/* Contact: */}
+        <HeadingSection scrollRef={contactRef}>
+          <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
+        </HeadingSection>
       </main>
     </>
   )

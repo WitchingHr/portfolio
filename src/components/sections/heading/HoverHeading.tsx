@@ -1,30 +1,30 @@
-import React, {
-	Dispatch,
-	FC,
-	PropsWithChildren,
-	SetStateAction,
-	useState,
-} from "react";
+import React, { FC, PropsWithChildren, useState } from "react";
 
+// PropTypes:
 interface HoverHeadingProps {
 	sub: string;
-	fn: () => void;
+	setViewSection: () => void;
 }
 
+// HoverHeading component:
+// animates a heading and subheading on hover
 const HoverHeading: FC<PropsWithChildren<HoverHeadingProps>> = ({
 	sub,
-	fn,
+	setViewSection,
 	children,
 }) => {
+	// State to activate animation:
 	const [active, setActive] = useState<boolean>(false);
 
+	// Set active to true and call setViewSection after 1 second:
 	const handleClick = () => {
 		setActive(true);
-    setTimeout(() => {
-      fn();
-    }, 1000);
+		setTimeout(() => {
+			setViewSection();
+		}, 1000);
 	};
 
+	// Render:
 	return (
 		<div
 			role="button"
