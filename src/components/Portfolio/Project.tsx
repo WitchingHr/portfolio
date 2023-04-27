@@ -39,7 +39,9 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 	children,
 }) => {
 	// Image state for hover effect:
-	const [imageSrc, setImageSrc] = useState(img1);
+	const [showBottomImage, setShowBottomImage] = useState(false);
+	const topStyle = showBottomImage ? "opacity-0" : "opacity-100";
+	const bottomStyle = showBottomImage ? "opacity-100" : "opacity-0";
 
 	// Render:
 	return (
@@ -62,29 +64,23 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 					{/* Project Images */}
 					<a
 						href={live}
-						onMouseOver={() => setImageSrc(img2)}
-						onMouseOut={() => setImageSrc(img1)}
+						target="_blank"
+						onMouseOver={() => setShowBottomImage(true)}
+						onMouseOut={() => setShowBottomImage(false)}
 						className="relative flex flex-col items-center justify-center w-[55%] shrink-0"
 					>
-						{imageSrc === img1 ? (
-							<>
-								<Image src={img1} alt="" className="rounded-md" />
-								<Image
-									src={img1}
-									alt=""
-									className="absolute rounded-md -z-10 image-blur"
-								/>
-							</>
-						) : (
-							<>
-								<Image src={img2} alt="" className="rounded-md" />
-								<Image
-									src={img2}
-									alt=""
-									className="absolute rounded-md -z-10 image-blur"
-								/>
-							</>
-						)}
+						<Image src={img1} alt="" className={`rounded-md duration-300 ` + topStyle} />
+						<Image
+							src={img1}
+							alt=""
+							className={"absolute rounded-md -z-10 image-blur duration-300 " + topStyle}
+						/>
+						<Image src={img2} alt="" className="absolute rounded-md -z-20" />
+						<Image
+							src={img2}
+							alt=""
+							className={"absolute rounded-md -z-30 image-blur duration-300 " + bottomStyle}
+						/>
 					</a>
 
 					{/* Project Information */}
@@ -116,6 +112,7 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 						<div className="flex flex-row gap-6">
 							<a
 								href={code}
+								target="_blank"
 								className="flex flex-row items-center flex-1 gap-1 font-semibold text-left"
 							>
 								<HoverLink>
@@ -139,6 +136,7 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 							</a>
 							<a
 								href={live}
+								target="_blank"
 								className="flex flex-row items-center flex-1 gap-1 font-semibold text-left"
 							>
 								<HoverLink>

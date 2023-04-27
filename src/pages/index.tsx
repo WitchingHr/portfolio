@@ -5,6 +5,7 @@ import Header from '../components/Header/Header';
 import HeadingSection from '../components/sections/heading/HeadingSection'
 import HoverHeading from '../components/sections/heading/HoverHeading';
 import Portfolio from '../components/Portfolio/Portfolio';
+import Contact from '@/components/Contact/Contact';
 
 // Home component:
 export default function Home() {
@@ -53,9 +54,13 @@ export default function Home() {
         )}
 
         {/* Contact: */}
-        <HeadingSection scrollRef={contactRef}>
-          <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
-        </HeadingSection>
+        {viewContact === false ? (
+          <HeadingSection scrollRef={contactRef}>
+            <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
+          </HeadingSection>
+        ):(
+          <Contact scrollRef={contactRef} />
+        )}
       </main>
     </>
   )

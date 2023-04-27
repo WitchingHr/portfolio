@@ -24,7 +24,7 @@ const Portfolio: FC<PortfolioProps> = ({ scrollRef }) => {
 			{/* Project 1 */}
 			<section
 				ref={scrollRef}
-				className="flex z-0 flex-col items-center h-screen !pt-[88px] text-center text-white perspective snap-start section-container"
+				className="flex z-0 flex-col items-center h-screen !pt-[88px] text-center text-white snap-start section-container"
 			>
 				<Project
 					title={"AT Your Service - Professional Painting"}
