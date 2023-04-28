@@ -2,6 +2,7 @@ import React, { FC, PropsWithChildren, useState } from "react";
 import { motion } from "framer-motion";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
+import Tilt from "react-parallax-tilt";
 
 // Components:
 import HoverLink from "../common/HoverLink";
@@ -62,26 +63,26 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 
 				<div className="flex flex-row gap-8 mt-6 mb-auto">
 					{/* Project Images */}
-					<a
-						href={live}
-						target="_blank"
-						onMouseOver={() => setShowBottomImage(true)}
-						onMouseOut={() => setShowBottomImage(false)}
-						className="relative flex flex-col items-center justify-center w-[55%] shrink-0"
-					>
-						<Image src={img1} alt="" className={`rounded-md duration-300 ` + topStyle} />
-						<Image
-							src={img1}
-							alt=""
-							className={"absolute rounded-md -z-10 image-blur duration-300 " + topStyle}
-						/>
-						<Image src={img2} alt="" className="absolute rounded-md -z-20" />
-						<Image
-							src={img2}
-							alt=""
-							className={"absolute rounded-md -z-30 image-blur duration-300 " + bottomStyle}
-						/>
-					</a>
+						<a
+							href={live}
+							target="_blank"
+							onMouseOver={() => setShowBottomImage(true)}
+							onMouseOut={() => setShowBottomImage(false)}
+							className="relative flex flex-col items-center justify-center w-[55%] shrink-0"
+						>
+							<Image src={img1} alt="" className={`rounded-md duration-300 ` + topStyle} />
+							<Image
+								src={img1}
+								alt=""
+								className={"absolute rounded-md -z-10 image-blur duration-300 " + topStyle}
+							/>
+							<Image src={img2} alt="" className="absolute rounded-md -z-20" />
+							<Image
+								src={img2}
+								alt=""
+								className={"absolute rounded-md -z-30 image-blur duration-300 " + bottomStyle}
+							/>
+						</a>
 
 					{/* Project Information */}
 					<div className="flex flex-col justify-between gap-6">
