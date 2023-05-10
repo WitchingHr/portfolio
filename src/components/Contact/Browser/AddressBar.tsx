@@ -1,16 +1,17 @@
 import React, { FC } from "react";
 
-// PropTypes
+// props
 interface AddressBarProps {
 	activeTab: number;
 }
 
-// AddressBar component: 
+// AddressBar:
 // contains the address bar for the browser with a link to my contact information
 const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 	return (
 		<div className="flex items-center p-1 bg-slate-800">
-			{/* Nav buttons */}
+
+			{/* nav buttons */}
 			<div className="flex items-center gap-2 mx-3">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +62,7 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 				</svg>
 			</div>
 
-			{/* URL */}
+			{/* url */}
 			<div className="flex items-center flex-1 px-3 py-1 my-1 text-sm text-left rounded-md bg-slate-950">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +96,8 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 						www.instagram.com/bermalberist
 					</a>
 				)}
-				{/* Bookmark Star */}
+
+				{/* bookmark star */}
 				<svg
 					className="ml-auto"
 					height="12"
@@ -111,7 +113,8 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 					/>
 				</svg>
 			</div>
-      {/* Kebab Menu */}
+
+      {/* kebab menu */}
 			<svg
 				className="pl-1 text-gray-600"
 				stroke="currentColor"

@@ -1,27 +1,33 @@
 import React, { FC } from "react";
 
-// Components:
+// components
 import Project from "./Project";
 import ContentSection from "../sections/content/ContentSection";
 
-// Assets:
+// assets
 import aty1 from "../../assets/ATY_1.png";
 import aty2 from "../../assets/ATY_2.png";
 import ds1 from "../../assets/DS_1.png";
 import ds2 from "../../assets/DS_2.png";
 
-// PropTypes:
+// props
 interface PortfolioProps {
 	scrollRef: React.RefObject<HTMLElement>;
 }
 
-// Portfolio component:
-// contains a list of projects
+// TODO:
+// - add more projects
+// - add project information to database
+// - fetch project information from database
+// - iterate over project information to render projects
+
+// Portfolio:
+// contains a list of projects with links to code and live sites
 const Portfolio: FC<PortfolioProps> = ({ scrollRef }) => {
-	// Render:
 	return (
-		<ContentSection title="Portfolio">
-			{/* Project 1 */}
+		<ContentSection title="Portfolio" id="portfolio">
+
+			{/* project 1 */}
 			<section
 				ref={scrollRef}
 				className="flex z-0 flex-col items-center h-screen !pt-[88px] text-center text-white snap-start section-container"
@@ -44,7 +50,7 @@ const Portfolio: FC<PortfolioProps> = ({ scrollRef }) => {
 				</Project>
 			</section>
 
-			{/* Project 2 */}
+			{/* project 2 */}
 			<section className="flex z-0 flex-col h-screen items-center !pt-[88px] text-center text-white perspective snap-start section-container">
 				<Project
 					title={"Dreaming Spanish"}
@@ -64,6 +70,7 @@ const Portfolio: FC<PortfolioProps> = ({ scrollRef }) => {
 					</>
 				</Project>
 			</section>
+
 		</ContentSection>
 	);
 };

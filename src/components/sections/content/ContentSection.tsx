@@ -1,20 +1,20 @@
 import React, { FC, PropsWithChildren } from "react";
 
-// Components:
+// components
 import HeadingInView from "./HeadingInView";
 
-//PropTypes:
+// props
 interface ContentSectionProps {
   title: string;
+	id: string;
 }
 
-// ContentSection component:
+// ContentSection:
 // container for content
-const ContentSection: FC<PropsWithChildren<ContentSectionProps>> = ({ title, children }) => {
-	// Render:
+const ContentSection: FC<PropsWithChildren<ContentSectionProps>> = ({ title, id, children }) => {
 	return (
-		<div className="relative">
-			{/* Stickied Header */}
+		<div className="relative" id={id}>
+			{/* stickied heading */}
 			<div className="sticky overflow-visible text-white top-0 z-40 !pt-[88px] !pb-0 section-container w-full bg-black">
 				<HeadingInView>{title}</HeadingInView>
 			</div>

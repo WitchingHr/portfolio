@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react';
 
-// Components:
-import Header from '../components/Header/Header';
+// components
+import Header from '../components/header/Header';
 import HeadingSection from '../components/sections/heading/HeadingSection'
 import HoverHeading from '../components/sections/heading/HoverHeading';
-import Portfolio from '../components/Portfolio/Portfolio';
-import Contact from '@/components/Contact/Contact';
+import Portfolio from '../components/portfolio/Portfolio';
+import Contact from '@/components/contact/Contact';
 
-// Home component:
+// Home:
+// home page
 export default function Home() {
 
-  // Scroll refs:
+  // scroll refs
   const heroRef = useRef<HTMLElement>(null);
   const portfolioRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
@@ -20,7 +21,7 @@ export default function Home() {
     }
   }
 
-  // Handling view states:
+  // handling content view states
   const [viewPortfolio, setViewPortfolio] = useState<boolean>(false);
   const [viewContact, setViewContact] = useState<boolean>(false);
   const handleViewPortfolio = () => {
@@ -30,10 +31,15 @@ export default function Home() {
     setViewContact(true);
   }
 
-  // Render:
   return (
     <>
-      <Header heroRef={heroRef} portfolioRef={portfolioRef} contactRef={contactRef} fn={scrollToRef} />
+      <Header
+        heroRef={heroRef}
+        portfolioRef={portfolioRef}
+        contactRef={contactRef}
+        fn={scrollToRef}
+        page="home"
+      />
 
       <main>
         {/* Hero: */}
@@ -44,18 +50,18 @@ export default function Home() {
           <h2 className="text-2xl gradient">Full Stack Developer</h2>
         </HeadingSection>
 
-        {/* Portfolio: */}
+        {/* portfolio section */}
         {viewPortfolio === false ? (
-          <HeadingSection scrollRef={portfolioRef}>
+          <HeadingSection scrollRef={portfolioRef} id="portfolio">
             <HoverHeading sub="Showcasing My Creative Journey" setViewSection={handleViewPortfolio}>Portfolio</HoverHeading>
           </HeadingSection>
         ):(
           <Portfolio scrollRef={portfolioRef} />
         )}
 
-        {/* Contact: */}
+        {/* contact section */}
         {viewContact === false ? (
-          <HeadingSection scrollRef={contactRef}>
+          <HeadingSection scrollRef={contactRef} id="contact">
             <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
           </HeadingSection>
         ):(

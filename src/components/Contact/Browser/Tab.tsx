@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import Image from "next/image";
 
-// Assets
+// assests
 import github from "../../../assets/github.svg";
 import linkedin from "../../../assets/linkedin.svg";
 import discord from "../../../assets/discord.svg";
 import instagram from "../../../assets/instagram.svg";
 
-// PropTypes
+// props
 interface TabProps {
 	id: number;
 	title: string;
@@ -15,15 +15,16 @@ interface TabProps {
 	setActiveTab: (id: number) => void;
 }
 
-// Tab component: renders a tab
+// Tab:
+// browser tab
 const Tab: FC<TabProps> = ({ id, title, activeTab, setActiveTab }) => {
 	const style =
 		activeTab === id
 			? "!bg-slate-800 active"
-			: "bg-slate-950";
+			: "bg-slate-950 inactive";
 
 	return (
-		<button className={`rounded-t-md hover:bg-slate-900 tab ` + style} onClick={() => setActiveTab(id)}>
+		<button className={`rounded-t-md hover:bg-slate-900 relative ` + style} onClick={() => setActiveTab(id)}>
 			<div className="flex items-center gap-2 px-3">
 				<Image
 					src={

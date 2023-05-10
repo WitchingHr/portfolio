@@ -2,19 +2,19 @@ import React, { FC, PropsWithChildren, useState } from "react";
 import { motion } from "framer-motion";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
-import Tilt from "react-parallax-tilt";
 
-// Components:
+// components
 import HoverLink from "../common/HoverLink";
+import Arrow from "../common/Arrow";
 
-// Animation variants:
+// animation variants
 const variants = {
-	// Slide in from right and fade in from grayscale to color:
+	// slide in from right and fade in from grayscale to color
 	hidden: { opacity: 0, x: 1000, filter: "grayscale(100%)" },
 	visible: { opacity: 1, x: 0, filter: "grayscale(0%)" },
 };
 
-// PropTypes:
+// props
 interface ProjectProps {
 	title: string;
 	subtitle: string;
@@ -26,7 +26,7 @@ interface ProjectProps {
 	img2: StaticImageData;
 }
 
-// Project component:
+// Project:
 // displays project information and images
 const Project: FC<PropsWithChildren<ProjectProps>> = ({
 	title,
@@ -39,12 +39,12 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 	img2,
 	children,
 }) => {
-	// Image state for hover effect:
+
+	// image state for hover effect
 	const [showBottomImage, setShowBottomImage] = useState(false);
 	const topStyle = showBottomImage ? "opacity-0" : "opacity-100";
 	const bottomStyle = showBottomImage ? "opacity-100" : "opacity-0";
 
-	// Render:
 	return (
 		<motion.div
 			initial="hidden"
@@ -53,7 +53,8 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 			transition={{ duration: 1, ease: "easeOut" }}
 		>
 			<div className="flex flex-col gap-[20%] mt-[88px]">
-				{/* Project Title and Subheading */}
+
+				{/* project title and subheading */}
 				<div>
 					<h1 className="text-4xl font-semibold text-left gradient">{title}</h1>
 					<h2 className="text-3xl text-left text-white text-opacity-50">
@@ -61,8 +62,10 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 					</h2>
 				</div>
 
+				{/* flex container for images and project info */}
 				<div className="flex flex-row gap-8 mt-6 mb-auto">
-					{/* Project Images */}
+
+					{/* image container, links to live preview */}
 						<a
 							href={live}
 							target="_blank"
@@ -70,13 +73,18 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 							onMouseOut={() => setShowBottomImage(false)}
 							className="relative flex flex-col items-center justify-center w-[55%] shrink-0"
 						>
+							{/* top image */}
 							<Image src={img1} alt="" className={`rounded-md duration-300 ` + topStyle} />
+							{/* top image blurred, sits behind image to create blur effect */}
 							<Image
 								src={img1}
 								alt=""
 								className={"absolute rounded-md -z-10 image-blur duration-300 " + topStyle}
 							/>
+
+							{/* bottom image */}
 							<Image src={img2} alt="" className="absolute rounded-md -z-20" />
+							{/* bottom image blurred, sits behind image to create blur effect */}
 							<Image
 								src={img2}
 								alt=""
@@ -84,15 +92,21 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 							/>
 						</a>
 
-					{/* Project Information */}
+					{/* project information */}
 					<div className="flex flex-col justify-between gap-6">
+						
+						{/* summary */}
 						<div>
 							<h2 className="text-4xl font-semibold text-left">Summary</h2>
 							<p className="text-xl font-light text-left text-white text-opacity-50">
 								{children}
 							</p>
 						</div>
+
+						{/* flex container for stack and date */}
 						<div className="flex flex-row gap-6">
+
+							{/* tech stack */}
 							<div className="flex-1">
 								<h2 className="text-2xl font-semibold text-left">
 									Technologies
@@ -101,6 +115,8 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 									{tech}
 								</p>
 							</div>
+
+							{/* date */}
 							<div className="flex-1">
 								<h2 className="text-2xl font-semibold text-left">Date</h2>
 								<p className="text-xl font-light text-left text-white text-opacity-50">
@@ -109,8 +125,10 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 							</div>
 						</div>
 
-						{/* Project Links */}
+						{/* project links */}
 						<div className="flex flex-row gap-6">
+							
+							{/* github link */}
 							<a
 								href={code}
 								target="_blank"
@@ -119,22 +137,10 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 								<HoverLink>
 									<span className="text-2xl">GitHub</span>
 								</HoverLink>
-								<svg
-									className="opacity-50"
-									stroke="currentColor"
-									fill="none"
-									strokeWidth="2"
-									viewBox="0 0 24 24"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									height="27"
-									width="27"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<line x1="7" y1="17" x2="17" y2="7"></line>
-									<polyline points="7 7 17 7 17 17"></polyline>
-								</svg>
+								<Arrow />
 							</a>
+							
+							{/* live preview link */}
 							<a
 								href={live}
 								target="_blank"
@@ -143,21 +149,7 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 								<HoverLink>
 									<span className="text-2xl">Live Preview</span>
 								</HoverLink>
-								<svg
-									className="opacity-50"
-									stroke="currentColor"
-									fill="none"
-									strokeWidth="2"
-									viewBox="0 0 24 24"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									height="27"
-									width="27"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<line x1="7" y1="17" x2="17" y2="7"></line>
-									<polyline points="7 7 17 7 17 17"></polyline>
-								</svg>
+								<Arrow />
 							</a>
 						</div>
 					</div>
