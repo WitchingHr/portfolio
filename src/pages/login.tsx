@@ -50,7 +50,7 @@ const Login: FC = () => {
       // set auth state
       setIsAuth(true);
 
-      toast.success('🦄 Wow so easy!', {
+      toast.success('🦄 Welcome back!', {
         position: "top-center",
         autoClose: 1500,
         hideProgressBar: false,

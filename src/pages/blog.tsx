@@ -11,6 +11,7 @@ import Link from "next/link";
 // TODO:
 // - create blog list
 // - create blog post card
+// - verify token on mount
 
 interface BlogPageProps {
   data: [];

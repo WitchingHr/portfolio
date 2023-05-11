@@ -84,8 +84,8 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 						www.github.com/WitchingHr
 					</a>
 				) : activeTab === 2 ? (
-					<a className="url" href="https://linkedin.com/in/matt-thomas-980b30258/" target="_blank">
-						www.linkedin.com/in/matt-thomas-980b30258
+					<a className="url" href="https://linkedin.com/in/WitchingHr/" target="_blank">
+						www.linkedin.com/in/WitchingHr
 					</a>
 				) : activeTab === 3 ? (
 					<a className="url" href="https://discordapp.com/users/WitchingHr#8079/" target="_blank">

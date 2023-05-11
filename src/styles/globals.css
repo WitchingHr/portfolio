@@ -312,3 +312,8 @@ body {
 .inactive:last-child::after {
   display: none;
 }
+
+.commits {
+  display: grid;
+  grid-template-columns: repeat(52, 1fr);
+}

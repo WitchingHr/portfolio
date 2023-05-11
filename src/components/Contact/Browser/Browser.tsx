@@ -1,7 +1,10 @@
-import React, { FC, PropsWithChildren, useState } from "react";
+import React, { FC, useState } from "react";
 import { motion } from "framer-motion";
 import Tab from "./Tab";
 import AddressBar from "./AddressBar";
+import Window from "./Window/Window";
+import Image from "next/image";
+import arrow from "../../../assets/arrow.svg";
 
 // animation variants
 const variants = {
@@ -20,12 +23,9 @@ const variants = {
 	},
 };
 
-// props
-interface BrowserProps {}
-
 // Browser:
 // renders a browser window with tabs and an address bar
-const Browser: FC<PropsWithChildren<BrowserProps>> = () => {
+const Browser: FC = () => {
 	const [activeTab, setActiveTab] = useState<number>(1);
 
 	return (
@@ -33,7 +33,7 @@ const Browser: FC<PropsWithChildren<BrowserProps>> = () => {
 			variants={variants}
 			initial="hidden"
 			animate="visible"
-			className="flex flex-col flex-1 w-full h-full mx-6 mt-6 mb-6 border border-gray-600 rounded-md parallax bg-slate-950"
+			className="flex flex-col flex-1 w-full h-full mx-6 mt-6 border border-gray-600 rounded-md parallax bg-slate-950"
 		>
 				{/* top row */}
 				<div className="flex h-9">
@@ -72,10 +72,15 @@ const Browser: FC<PropsWithChildren<BrowserProps>> = () => {
 							setActiveTab={setActiveTab}
 						/>
 					</div>
+
+					{/* arrow */}
+					<Image src={arrow} alt="" className="ml-auto mr-2 scale-75" />
+					
 				</div>
 				<AddressBar activeTab={activeTab} />
 
 				{/* content will go here */}
+				<Window activeTab={activeTab} />
 
 		</motion.div>
 	);

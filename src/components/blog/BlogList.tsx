@@ -42,7 +42,7 @@ const BlogList: FC<BlogListProps> = ({ blogs }) => {
             variants={variants}
             initial="hidden"
             animate="visible"
-            transition={{ duration: 0.5, delay: (0.3 * (i + 1)) + 0.5, ease: "easeIn", type: "spring", damping: 11 }}
+            transition={{ duration: 0.5, delay: (0.3 * (i + 1)) + 0.7, ease: "easeIn", type: "spring", damping: 11 }}
             key={blog._id}
             className="flex flex-col border border-gray-600 rounded-md bg-slate-900"
           >
