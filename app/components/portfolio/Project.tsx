@@ -1,6 +1,7 @@
-import React, { FC, PropsWithChildren, useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import React, { FC, PropsWithChildren, useEffect, useState } from "react";
+
+import { motion, useAnimation, useInView } from "framer-motion";
 
 // components
 import HoverLink from "../common/HoverLink";
@@ -8,9 +9,9 @@ import Arrow from "../common/Arrow";
 
 // animation variants
 const variants = {
-	// slide in from right and fade in from grayscale to color
-	hidden: { opacity: 0, x: 1000, filter: "grayscale(100%)" },
-	visible: { opacity: 1, x: 0, filter: "grayscale(0%)" },
+	// slide in from bottom and fade in from grayscale to color
+	hidden: { opacity: 0, y: 200, filter: "grayscale(100%)" },
+	visible: { opacity: 1, y: 0, filter: "grayscale(0%)" },
 };
 
 // props
@@ -44,12 +45,25 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 	const topStyle = showBottomImage ? "opacity-0" : "opacity-100";
 	const bottomStyle = showBottomImage ? "opacity-100" : "opacity-0";
 
+	// ref to track when element is in view
+	const ref = React.useRef(null);
+	const isInView = useInView(ref, { once: true });
+
+	// animation controls
+	const controls = useAnimation();
+	useEffect(() => {
+		if (isInView) {
+			controls.start("visible");
+		}
+	}, [isInView, controls]);
+
 	return (
 		<motion.div
+		 	ref={ref}
 			initial="hidden"
-			animate="visible"
+			animate={controls}
 			variants={variants}
-			transition={{ duration: 1, ease: "easeOut" }}
+			transition={{ duration: 0.5, ease: "easeOut" }}
 		>
 			<div className="flex flex-col h-full">
 
@@ -71,7 +85,6 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 							target="_blank"
 							onMouseOver={() => setShowBottomImage(true)}
 							onMouseOut={() => setShowBottomImage(false)}
-							// className="relative min-w-[55%] h-auto rounded-md aspect-video"
 							className="relative h-auto my-auto aspect-video"
 						>
 							{/* top image */}

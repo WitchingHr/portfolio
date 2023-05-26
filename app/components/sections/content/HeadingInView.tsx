@@ -19,15 +19,13 @@ const HeadingInView: FC<PropsWithChildren> = ({ children }) => {
 
 	// ref to track when element is in view
 	const ref = useRef(null);
-	const isInView = useInView(ref, { amount: 0.5 });
+	const isInView = useInView(ref, { amount: 0.5, once: true });
 
 	// animation controls
 	const controls = useAnimation();
 	useEffect(() => {
 		if (isInView) {
 			controls.start("visible");
-		} else {
-			controls.start("hidden");
 		}
 	}, [isInView, controls]);
 
