@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from "react";
+"use client"
 
 // components
 import Fade from "./Fade";
@@ -7,12 +7,13 @@ import Fade from "./Fade";
 interface HeadingSectionProps {
 	scrollRef: React.RefObject<HTMLElement>;
 	id?: string;
+	children: React.ReactNode;
 }
 
 // Section:
 // main section component
 // shows heading that can be clicked on to show content
-const HeadingSection: FC<PropsWithChildren<HeadingSectionProps>> = ({
+const HeadingSection: React.FC<HeadingSectionProps> = ({
 	scrollRef,
 	id,
 	children,

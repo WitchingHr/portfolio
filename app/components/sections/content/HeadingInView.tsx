@@ -1,4 +1,6 @@
-import React, { FC, PropsWithChildren, useEffect, useRef } from "react";
+"use client"
+
+import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
 // animation variants
@@ -13,9 +15,13 @@ const variants2 = {
 	visible: { width: "100%", transition: { duration: 0.5, delay: 1 } },
 };
 
+interface HeadingInViewProps {
+	children: React.ReactNode;
+}
+
 // HeadingInView:
 // animates heading and hr as they enter viewport
-const HeadingInView: FC<PropsWithChildren> = ({ children }) => {
+const HeadingInView: React.FC<HeadingInViewProps> = ({ children }) => {
 
 	// ref to track when element is in view
 	const ref = useRef(null);

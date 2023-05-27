@@ -1,5 +1,6 @@
+"use client"
+
 // Arrow:
-// arrow icon svg
 const Arrow = () => {
   return (
     <svg

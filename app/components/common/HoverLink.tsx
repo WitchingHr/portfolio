@@ -1,8 +1,11 @@
-import React, { FC, PropsWithChildren } from "react";
+"use client"
 
+interface HoverLinkProps {
+	children: React.ReactNode;
+}
 // HoverLink component:
-// adds a hover effect to its children
-const HoverLink: FC<PropsWithChildren> = ({ children }) => {
+// adds a hover animation to its children
+const HoverLink: React.FC<HoverLinkProps> = ({ children }) => {
 	// Render:
 	return <span className="cursor-pointer hover-link">{children}</span>;
 };

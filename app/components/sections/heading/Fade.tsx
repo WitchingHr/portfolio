@@ -1,10 +1,16 @@
-import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
+"use client"
+
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 
+interface FadeProps {
+	children: React.ReactNode;
+}
+
 // Fade
 // animates children as they near the top or bottom of the screen
-const Fade: React.FC<PropsWithChildren> = ({ children }) => {
+const Fade: React.FC<FadeProps> = ({ children }) => {
 
 	// for triggering re-render on window resize
 	const [mobile, setMobile] = useState<boolean>(false);
@@ -19,6 +25,10 @@ const Fade: React.FC<PropsWithChildren> = ({ children }) => {
 		// update window width on resize
 		const handleResize = () => {
 			windowRef.current = window.innerWidth;
+
+			if (windowRef.current < 768) {
+				setMobile(true);
+			}
 
 			// check if mobile
 			if (windowRef.current < 768) {
@@ -67,7 +77,7 @@ const Fade: React.FC<PropsWithChildren> = ({ children }) => {
 	);
 
 	// if mobile, fade in and out
-	if (windowRef.current < 768) {
+	if (windowRef.current && windowRef.current < 768) {
 		return (
 			<motion.div ref={ref} style={{ opacity }}>
 				{children}

@@ -1,6 +1,9 @@
-import React, { FC } from "react";
+"use client"
+
+import { useMemo } from "react";
 import { motion } from "framer-motion";
-import Github from "./Github";
+
+import Github from "./github/Github";
 import Linkedin from "./Linkedin";
 import Discord from "./Discord";
 
@@ -25,7 +28,11 @@ interface WindowProps {
 
 // Window:
 // renders a browser window
-const Window: FC<WindowProps> = ({ activeTab }) => {
+const Window: React.FC<WindowProps> = ({ activeTab }) => {
+
+	// array of 364 nulls for github commits
+	const commits = useMemo(() => new Array(364).fill(null), []);
+
 	return (
 		<motion.div
 			key={activeTab}
@@ -34,7 +41,7 @@ const Window: FC<WindowProps> = ({ activeTab }) => {
 			animate="visible"
 			className="flex flex-col flex-1 rounded-b-md"
 		>
-			{activeTab === 1 && <Github />}
+			{activeTab === 1 && <Github commits={commits} />}
 			{activeTab === 2 && <Linkedin />}
 			{activeTab === 3 && <Discord />}
 		</motion.div>

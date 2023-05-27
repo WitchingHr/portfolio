@@ -1,6 +1,8 @@
+"use client"
+
+import { useEffect, useRef } from "react";
 import Project from "./Project";
 import ContentSection from "../sections/content/ContentSection";
-import { useEffect, useRef } from "react";
 
 // Portfolio:
 // contains a list of projects with links to code and live sites

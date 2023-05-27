@@ -1,14 +1,17 @@
-import React, { FC, PropsWithChildren, useState } from "react";
+"use client"
+
+import { useState } from "react";
 
 // props
 interface HoverHeadingProps {
 	sub: string;
 	setViewSection: () => void;
+	children: React.ReactNode;
 }
 
 // HoverHeading:
 // animates a heading and subheading on hover
-const HoverHeading: FC<PropsWithChildren<HoverHeadingProps>> = ({
+const HoverHeading: React.FC<HoverHeadingProps> = ({
 	sub,
 	setViewSection,
 	children,

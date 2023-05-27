@@ -1,11 +1,14 @@
-import React, { FC, useState, useEffect, useRef, use, RefObject } from "react";
+"use client"
+
 import Image from "next/image";
+import { useState, useEffect, useRef, RefObject } from "react";
+
 import discord from "../../../../assets/svg/discord.svg";
 import arrow from "../../../../assets/svg/arrow.svg";
 
 // Discord:
 // renders a browser window with Discord
-const Discord: FC = () => {
+const Discord = () => {
   const [messages, setMessages] = useState<Message[]>([chat[0]]);
 
   // refs
@@ -58,7 +61,7 @@ const Discord: FC = () => {
   }, [messages]);
 
 	return (
-		<div className="flex flex-1 h-full overflow-auto">
+		<div className="flex flex-1 h-full overflow-auto rounded-b-md">
 			{/* servers */}
 			<ul className="flex flex-col items-center gap-2 px-4 mt-2">
 
@@ -87,7 +90,7 @@ const Discord: FC = () => {
 			</ul>
 
       {/* channel list */}
-			<ul className="flex flex-col bg-slate-900">
+			<ul className="flex-col hidden xs:flex bg-slate-900">
         <li className="flex items-center justify-between px-4 py-2 h-[41px] border-b border-gray-600">
           <a href="http://discordapp.com/users/WitchingHr#8079" target="_blank" className="mr-2 url">Matt Thomas</a>
           <Image src={arrow} alt="" className="scale-75" />

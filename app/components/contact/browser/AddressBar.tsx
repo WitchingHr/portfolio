@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+"use client"
 
 // props
 interface AddressBarProps {
@@ -7,7 +7,7 @@ interface AddressBarProps {
 
 // AddressBar:
 // contains the address bar for the browser with a link to my contact information
-const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
+const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 	return (
 		<div className="flex items-center px-2 py-1 xs:py-1 xs:px-1 bg-slate-800">
 
@@ -80,15 +80,15 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 					></path>
 				</svg>
 				{activeTab === 1 ? (
-					<a className="flex-1 truncate url" href="https://www.github.com/WitchingHr/" target="_blank">
+					<a className="flex-1 truncate gradient" href="https://www.github.com/WitchingHr/" target="_blank">
 						www.github.com/WitchingHr
 					</a>
 				) : activeTab === 2 ? (
-					<a className="flex-1 truncate url" href="https://linkedin.com/in/WitchingHr/" target="_blank">
+					<a className="flex-1 truncate gradient" href="https://linkedin.com/in/WitchingHr/" target="_blank">
 						www.linkedin.com/in/WitchingHr
 					</a>
 				) : (
-					<a className="flex-1 truncate url" href="https://discordapp.com/users/WitchingHr#8079/" target="_blank">
+					<a className="flex-1 truncate gradient" href="https://discordapp.com/users/WitchingHr#8079/" target="_blank">
 						www.discordapp.com/users/WitchingHr#8079
 					</a>
 				)}

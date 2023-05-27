@@ -1,8 +1,11 @@
+"use client"
+
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 import ContentSection from "../sections/content/ContentSection";
 import Browser from "./browser/Browser";
-import { useEffect, useRef } from "react";
+
 
 // Contact:
 // contact information section
@@ -20,10 +23,9 @@ const Contact = () => {
 			<section
 				className="z-0 flex flex-col items-center text-center text-white sm-contact-section md:contact-section sm-section-container md:section-container perspective"
 			>
-
 				<motion.div
-					initial={{ opacity: 0, x: 1000 }}
-					animate={{ opacity: 1, x: 0 }}
+					initial={{ opacity: 0, y: 200 }}
+					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1 }}
 					className="flex flex-col items-start mr-auto text-left"
 				>

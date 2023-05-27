@@ -1,7 +1,7 @@
 import Image from "next/image";
-import React, { FC, PropsWithChildren, useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+
 
 // components
 import HoverLink from "../common/HoverLink";
@@ -24,11 +24,12 @@ interface ProjectProps {
 	live: string;
 	img1: string;
 	img2: string;
+	children: React.ReactNode;
 }
 
 // Project:
 // displays project information and images
-const Project: FC<PropsWithChildren<ProjectProps>> = ({
+const Project: React.FC<ProjectProps> = ({
 	title,
 	subtitle,
 	tech,
@@ -46,7 +47,7 @@ const Project: FC<PropsWithChildren<ProjectProps>> = ({
 	const bottomStyle = showBottomImage ? "opacity-100" : "opacity-0";
 
 	// ref to track when element is in view
-	const ref = React.useRef(null);
+	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true });
 
 	// animation controls

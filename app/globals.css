@@ -8,6 +8,7 @@ html {
   scroll-snap-type: y proximity;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  min-width: 320px;
 }
 
 body {
@@ -36,6 +37,17 @@ body {
   .sm-contact-section {
     height: calc(100vh - 120px);
   }
+
+}
+
+.commits {
+  display: grid;
+  grid-template-columns: repeat(52, 1fr);
+}
+
+.half-commits {
+  display: grid;
+  grid-template-columns: repeat(26, 1fr);
 }
 
 .browser-gradient {
@@ -319,9 +331,4 @@ body {
 
 .inactive:last-child::after {
   display: none;
-}
-
-.commits {
-  display: grid;
-  grid-template-columns: repeat(52, 1fr);
 }

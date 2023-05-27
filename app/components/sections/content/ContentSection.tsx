@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from "react";
+"use client"
 
 // components
 import HeadingInView from "./HeadingInView";
@@ -8,11 +8,12 @@ interface ContentSectionProps {
   title: string;
 	id: string;
 	scrollRef: React.RefObject<HTMLDivElement>;
+	children: React.ReactNode;
 }
 
 // ContentSection:
 // container for content
-const ContentSection: FC<PropsWithChildren<ContentSectionProps>> = ({ title, id, scrollRef, children }) => {
+const ContentSection: React.FC<ContentSectionProps> = ({ title, id, scrollRef, children }) => {
 	return (
 		<div ref={scrollRef} className="relative" id={id}>
 			{/* stickied heading */}

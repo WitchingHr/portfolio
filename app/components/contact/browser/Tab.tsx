@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+"use client"
+
 import Image from "next/image";
 
 // assests
@@ -16,7 +17,7 @@ interface TabProps {
 
 // Tab:
 // browser tab
-const Tab: FC<TabProps> = ({ id, title, activeTab, setActiveTab }) => {
+const Tab: React.FC<TabProps> = ({ id, title, activeTab, setActiveTab }) => {
 	const style =
 		activeTab === id
 			? "!bg-slate-800 active"
