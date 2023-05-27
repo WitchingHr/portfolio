@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import HeadingSection from '../sections/heading/HeadingSection'
 import HoverHeading from '../sections/heading/HoverHeading';
@@ -9,16 +9,6 @@ import Contact from '../contact/Contact';
  
 
 const Home = () => {
-  // scroll refs
-  const heroRef = useRef<HTMLElement>(null);
-  const portfolioRef = useRef<HTMLElement>(null);
-  const contactRef = useRef<HTMLElement>(null);
-  const scrollToRef = (ref: React.RefObject<HTMLElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
   // handling content view states
   const [viewPortfolio, setViewPortfolio] = useState<boolean>(false);
   const [viewContact, setViewContact] = useState<boolean>(false);
@@ -34,7 +24,7 @@ const Home = () => {
 
       <main>
         {/* Hero: */}
-        <HeadingSection scrollRef={heroRef}>
+        <HeadingSection>
           <h1 className="text-6xl font-bold">
             Matt Thomas
           </h1>
@@ -43,7 +33,7 @@ const Home = () => {
 
         {/* portfolio section */}
         {viewPortfolio === false ? (
-          <HeadingSection scrollRef={portfolioRef} id="portfolio">
+          <HeadingSection id="portfolio">
             <HoverHeading sub="Showcasing My Creative Journey" setViewSection={handleViewPortfolio}>Portfolio</HoverHeading>
           </HeadingSection>
         ):(
@@ -52,7 +42,7 @@ const Home = () => {
 
         {/* contact section */}
         {viewContact === false ? (
-          <HeadingSection scrollRef={contactRef} id="contact">
+          <HeadingSection id="contact">
             <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
           </HeadingSection>
         ):(

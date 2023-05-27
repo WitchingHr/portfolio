@@ -1,14 +1,7 @@
 # TODO:
 
-## Contact
-- [ ] Mobile browser
-
 ## ThreeJS
 - [ ] Add ThreeJS to home page
-
-## Mobile
-- [ ] Add mobile support
-- [ ] Change/Remove animations
 
 ## a11y
 - [ ] Add a11y support

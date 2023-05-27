@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 import Github from "./github/Github";
 import Linkedin from "./Linkedin";
-import Discord from "./Discord";
+import Discord from "./discord/Discord";
 
 // animation variants
 const variants = {

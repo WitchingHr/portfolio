@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useState, useEffect, useRef, RefObject } from "react";
 
-import discord from "../../../../assets/svg/discord.svg";
-import arrow from "../../../../assets/svg/arrow.svg";
+import discord from "../../../../../assets/svg/discord.svg";
+import arrow from "../../../../../assets/svg/arrow.svg";
+import Chat from "./Chat";
 
 // Discord:
 // renders a browser window with Discord
@@ -13,7 +14,6 @@ const Discord = () => {
 
   // refs
   const chatRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLUListElement>(null);
 
   // set chatbox max height to prevent overflow
   useEffect(() => {
@@ -39,26 +39,37 @@ const Discord = () => {
     // render messages one at a time
     const interval = setInterval(() => {
       // set messages to all messages up to current index
-      setMessages(chat.slice(0, i));
+      // setMessages(chat.slice(0, i));
+      // debugger;
+      setMessages(messages => [...messages, chat[i - 1]]);
 
       // increment index
       i++;
 
       // stop interval when all messages have been rendered
-      if (i > chat.length) {
+      if (i > chat.length - 1) {
         clearInterval(interval);
       }
     }, 2000);
     return () => clearInterval(interval);
   }, []);
 
-  // scroll to bottom of chatbox when new message is rendered
-  useEffect(() => {
-    const lastChild = scrollRef.current?.lastElementChild;
-    if (lastChild) {
-      lastChild.scrollIntoView();
-    }
-  }, [messages]);
+  // message input
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // don't send empty messages
+    if (inputValue === "") return;
+
+    // add message to chat
+    setMessages([...messages, {user: "Guest", text: inputValue}]);
+
+    // clear input
+    setInputValue("");
+  }
+
 
 	return (
 		<div className="flex flex-1 h-full overflow-auto rounded-b-md">
@@ -130,26 +141,27 @@ const Discord = () => {
         </div>
 
         {/* chatbox */}
-        <div className="flex flex-col flex-1 overflow-scroll">
-          {/* messages */}
-          <ul ref={scrollRef} className="flex flex-col justify-end flex-1">
-            {messages.map((message, i) => (
-              <li key={i} className="flex items-center gap-4 px-4 py-2 min-h-min">
-                <Image src={"/images/me.jpg"} width={40} height={40} alt="" className="object-cover rounded-full aspect-square" />
-                <div className="flex-1 text-sm">
-                  <div className="text-left text-gray-600">{message.user}</div>
-                  <div className="text-left">{message.text}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <Chat>
+          {messages.map((message, i) => (
+            <li key={i} className="flex items-center gap-4 px-4 py-2 min-h-min">
+              <Image
+                src={message.user === "WitchingHr" ? "/images/me.jpg" : "/images/placeholder.jpg"}
+                width={40} height={40}
+                alt=""
+                className="object-cover rounded-full aspect-square"
+              />
+              <div className="flex-1 text-sm">
+                <div className="text-left text-gray-600">{message.user}</div>
+                <div className="text-left">{message.text}</div>
+              </div>
+            </li>
+          ))}
+        </Chat>
 
-        </div>
-          {/* message input */}
-          <div className="flex items-center p-4">
-            <input type="text" placeholder="Message #developer" className="flex-1 h-8 px-4 text-sm rounded-md font-extralight bg-slate-800" />
-          </div>
-
+        {/* message input */}
+        <form onSubmit={sendMessage} className="flex items-center p-4">
+          <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder="Message #developer" className="flex-1 h-8 px-4 text-sm rounded-md font-extralight bg-slate-800" />
+        </form>
       </div>
 		</div>
 	);
