@@ -1,11 +1,10 @@
-import React, { FC } from "react";
 import Image from "next/image";
 
 // Linkedin:
 // renders a browser window with a LinkedIn profile
-const Linkedin: FC = () => {
+const Linkedin = () => {
 	return (
-		<div className="flex flex-1 gap-8">
+		<div className="flex flex-1 gap-8 browser-gradient">
 			<div className="flex flex-col items-start w-1/5 mt-6 ml-8">
 				{/* profile pic */}
 				<a

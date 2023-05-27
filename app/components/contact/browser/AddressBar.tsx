@@ -9,10 +9,10 @@ interface AddressBarProps {
 // contains the address bar for the browser with a link to my contact information
 const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 	return (
-		<div className="flex items-center p-1 bg-slate-800">
+		<div className="flex items-center px-2 py-1 xs:py-1 xs:px-1 bg-slate-800">
 
 			{/* nav buttons */}
-			<div className="flex items-center gap-2 mx-3">
+			<div className="flex items-center gap-2 pr-3 xs:px-3">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -63,7 +63,7 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 			</div>
 
 			{/* url */}
-			<div className="flex items-center flex-1 px-3 py-1 my-1 text-sm text-left rounded-md bg-slate-950">
+			<div className="flex items-center flex-1 px-3 py-1 my-1 overflow-hidden text-sm text-left rounded-md bg-slate-950">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -71,7 +71,7 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 					strokeWidth="2"
 					stroke="currentColor"
 					aria-hidden="true"
-					className="mr-1.5 h-3 w-3"
+					className="mr-1.5 h-3 w-3 shrink-0"
 				>
 					<path
 						strokeLinecap="round"
@@ -80,26 +80,22 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 					></path>
 				</svg>
 				{activeTab === 1 ? (
-					<a className="url" href="https://www.github.com/WitchingHr/" target="_blank">
+					<a className="flex-1 truncate url" href="https://www.github.com/WitchingHr/" target="_blank">
 						www.github.com/WitchingHr
 					</a>
 				) : activeTab === 2 ? (
-					<a className="url" href="https://linkedin.com/in/WitchingHr/" target="_blank">
+					<a className="flex-1 truncate url" href="https://linkedin.com/in/WitchingHr/" target="_blank">
 						www.linkedin.com/in/WitchingHr
 					</a>
-				) : activeTab === 3 ? (
-					<a className="url" href="https://discordapp.com/users/WitchingHr#8079/" target="_blank">
-						www.discordapp.com/users/WitchingHr#8079
-					</a>
 				) : (
-					<a className="url" href="https://instagram.com/bermalberist/" target="_blank">
-						www.instagram.com/bermalberist
+					<a className="flex-1 truncate url" href="https://discordapp.com/users/WitchingHr#8079/" target="_blank">
+						www.discordapp.com/users/WitchingHr#8079
 					</a>
 				)}
 
 				{/* bookmark star */}
 				<svg
-					className="ml-auto"
+					className="hidden ml-auto xs:block"
 					height="12"
 					width="12"
 					viewBox="0 0 100 100"
@@ -116,7 +112,7 @@ const AddressBar: FC<AddressBarProps> = ({ activeTab }) => {
 
       {/* kebab menu */}
 			<svg
-				className="pl-1 text-gray-600"
+				className="hidden pl-1 text-gray-600 xs:block"
 				stroke="currentColor"
         strokeWidth="10"
 				height="24"

@@ -22,7 +22,7 @@ const HeadingSection: FC<PropsWithChildren<HeadingSectionProps>> = ({
 		<section
 			id={id}
 			ref={scrollRef}
-			className="relative z-40 flex flex-col items-center justify-center h-screen text-center text-white perspective snap-start section-container"
+			className="relative z-40 flex flex-col items-center justify-center h-screen text-center text-white perspective sm-section-container md:section-container"
 		>
 			<Fade>{children}</Fade>
 		</section>

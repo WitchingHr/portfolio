@@ -7,15 +7,16 @@ import HeadingInView from "./HeadingInView";
 interface ContentSectionProps {
   title: string;
 	id: string;
+	scrollRef: React.RefObject<HTMLDivElement>;
 }
 
 // ContentSection:
 // container for content
-const ContentSection: FC<PropsWithChildren<ContentSectionProps>> = ({ title, id, children }) => {
+const ContentSection: FC<PropsWithChildren<ContentSectionProps>> = ({ title, id, scrollRef, children }) => {
 	return (
-		<div className="relative snap-start" id={id}>
+		<div ref={scrollRef} className="relative" id={id}>
 			{/* stickied heading */}
-			<div className="sticky overflow-visible text-white top-0 z-40 !pt-[88px] !pb-0 section-container w-full bg-black">
+			<div className="sticky overflow-visible text-white top-0 z-40 !pt-[60px] md:!pt-[88px] !pb-0 sm-section-container md:section-container w-full bg-black">
 				<HeadingInView>{title}</HeadingInView>
 			</div>
       {children}

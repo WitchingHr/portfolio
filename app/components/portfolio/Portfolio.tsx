@@ -1,20 +1,21 @@
-import React, { FC } from "react";
-
-// components
 import Project from "./Project";
 import ContentSection from "../sections/content/ContentSection";
-
-// props
-interface PortfolioProps {
-	scrollRef: React.RefObject<HTMLElement>;
-}
+import { useEffect, useRef } from "react";
 
 // Portfolio:
 // contains a list of projects with links to code and live sites
-const Portfolio: FC<PortfolioProps> = ({ scrollRef }) => {
+const Portfolio = () => {
+	const scrollRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (scrollRef.current) {
+			scrollRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+		}
+	}, []);
+
 	return (
-		<ContentSection title="Portfolio" id="portfolio">
-			<section className="z-0 flex flex-col items-center gap-24 text-center text-white section-container">
+		<ContentSection scrollRef={scrollRef} title="Portfolio" id="portfolio">
+			<section className="z-0 flex flex-col items-center gap-20 text-center text-white sm-section-container md:section-container">
 				<Project
 					title={"Facebook"}
 					subtitle={"Facebook clone"}

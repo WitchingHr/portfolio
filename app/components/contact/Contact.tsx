@@ -2,14 +2,23 @@ import { motion } from "framer-motion";
 
 import ContentSection from "../sections/content/ContentSection";
 import Browser from "./browser/Browser";
+import { useEffect, useRef } from "react";
 
 // Contact:
 // contact information section
 const Contact = () => {
+	const scrollRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (scrollRef.current) {
+			scrollRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+		}
+	}, []);
+
 	return (
-		<ContentSection title="Contact" id="contact">
+		<ContentSection scrollRef={scrollRef} title="Contact" id="contact">
 			<section
-				className="z-0 flex flex-col items-center text-center text-white contact-section snap-start section-container perspective"
+				className="z-0 flex flex-col items-center text-center text-white sm-contact-section md:contact-section sm-section-container md:section-container perspective"
 			>
 
 				<motion.div
@@ -20,11 +29,14 @@ const Contact = () => {
 				>
 					{/* email */}
 					<a href="mailto:matt.thomas.developer@gmail.com">
-						<h1 className="text-4xl font-semibold text-left gradient">MATT.THOMAS.DEVELOPER@GMAIL.COM</h1>
+						<h1 className="flex flex-wrap w-full text-lg font-semibold text-left xs:text-xl md:text-3xl lg:text-4xl gradient">
+							<span>MATT.THOMAS.DEVELOPER</span>
+							<span>@GMAIL.COM</span>
+						</h1>
 					</a>
 					
 					{/* subheading */}
-					<h2 className="text-3xl text-left text-white text-opacity-50">
+					<h2 className="text-lg text-left text-white text-opacity-50 xs:text-2xl md:text-3xl">
 						Reach out for collaboration or just to chat!
 					</h2>
 				</motion.div>

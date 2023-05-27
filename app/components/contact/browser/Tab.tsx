@@ -23,7 +23,7 @@ const Tab: FC<TabProps> = ({ id, title, activeTab, setActiveTab }) => {
 			: "bg-slate-950 inactive";
 
 	return (
-		<button className={`rounded-t-md hover:bg-slate-900 relative ` + style} onClick={() => setActiveTab(id)}>
+		<button className={`flex-1 max-w-[144px] rounded-t-md hover:bg-slate-900 relative ` + style} onClick={() => setActiveTab(id)}>
 			<div className="flex items-center gap-2 px-3">
 				<Image
 					src={
@@ -35,7 +35,7 @@ const Tab: FC<TabProps> = ({ id, title, activeTab, setActiveTab }) => {
 					}
 					alt=""
 				/>
-				<div className="w-24 text-sm text-left">{title}</div>
+				<div className="text-sm text-left truncate">{title}</div>
 			</div>
 		</button>
 	);

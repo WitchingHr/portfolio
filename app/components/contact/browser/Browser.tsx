@@ -41,14 +41,14 @@ const Browser: FC = () => {
 				<div className="flex h-9">
 
 					{/* traffic lights */}
-					<div className="flex items-center justify-center gap-1.5 px-6 pt-1">
+					<div className="flex items-center justify-center gap-1.5 px-2 xs:px-4 sm:mx-2 pt-1 shrink">
 						<div className="block w-2.5 h-2.5 rounded-full bg-slate-300"></div>
 						<div className="block w-2.5 h-2.5 rounded-full bg-slate-300"></div>
 						<div className="block w-2.5 h-2.5 rounded-full bg-slate-300"></div>
 					</div>
 
 					{/* tabs */}
-					<div className="flex mt-1.5">
+					<div className="flex flex-1 mt-1.5">
 						<Tab
 							title="GitHub"
 							id={1}
@@ -70,7 +70,7 @@ const Browser: FC = () => {
 					</div>
 
 					{/* arrow */}
-					<Image src={arrow} alt="" className="ml-auto mr-2 scale-75" />
+					<Image src={arrow} alt="" className="hidden mx-2 scale-75 xs:block" />
 					
 				</div>
 				<AddressBar activeTab={activeTab} />

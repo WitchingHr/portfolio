@@ -47,7 +47,7 @@ const Home = () => {
             <HoverHeading sub="Showcasing My Creative Journey" setViewSection={handleViewPortfolio}>Portfolio</HoverHeading>
           </HeadingSection>
         ):(
-          <Portfolio scrollRef={portfolioRef} />
+          <Portfolio />
         )}
 
         {/* contact section */}
@@ -56,7 +56,7 @@ const Home = () => {
             <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
           </HeadingSection>
         ):(
-          <Contact scrollRef={contactRef} />
+          <Contact />
         )}
       </main>
     </>
