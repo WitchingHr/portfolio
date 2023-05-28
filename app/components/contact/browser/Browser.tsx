@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 import Tab from "./Tab";
 import AddressBar from "./AddressBar";
@@ -9,27 +8,6 @@ import Window from "./window/Window";
 import Image from "next/image";
 
 import arrow from "../../../assets/svg/arrow.svg";
-
-// animation variants
-const variants = {
-	hidden: {
-		opacity: 0,
-		rotateX: 270,
-	},
-	// fade and rotate in with perspective
-	visible: {
-		opacity: 1,
-		rotateX: 360,
-	},
-	mobileHidden: {
-		opacity: 0,
-		y: 200,
-	},
-	mobileVisible: {
-		opacity: 1,
-		y: 0,
-	},
-};
 
 // Browser:
 // renders a browser window with tabs and an address bar
@@ -39,11 +17,7 @@ const Browser = () => {
 	const mobileRef = useRef<boolean>(window.innerWidth < 768);
 
 	return (
-		<motion.div
-			variants={variants}
-			initial={mobileRef.current ? "mobileHidden" : "hidden"}
-			animate={mobileRef.current ? "mobileVisible" : "visible"}
-			transition={{ duration: 0.7, delay: 1 }}
+		<div
 			className="flex flex-col flex-1 w-full mx-6 mt-6 border border-gray-600 rounded-md parallax bg-slate-950"
 		>
 				{/* top row */}
@@ -87,7 +61,7 @@ const Browser = () => {
 				{/* content will go here */}
 				<Window activeTab={activeTab} />
 
-		</motion.div>
+		</div>
 	);
 };
 

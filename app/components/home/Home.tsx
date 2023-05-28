@@ -31,23 +31,8 @@ const Home = () => {
           <h2 className="text-2xl gradient">Full Stack Developer</h2>
         </HeadingSection>
 
-        {/* portfolio section */}
-        {viewPortfolio === false ? (
-          <HeadingSection id="portfolio">
-            <HoverHeading sub="Showcasing My Creative Journey" setViewSection={handleViewPortfolio}>Portfolio</HoverHeading>
-          </HeadingSection>
-        ):(
-          <Portfolio />
-        )}
-
-        {/* contact section */}
-        {viewContact === false ? (
-          <HeadingSection id="contact">
-            <HoverHeading sub="Get in Touch for Professional Opportunities" setViewSection={handleViewContact}>Contact</HoverHeading>
-          </HeadingSection>
-        ):(
-          <Contact />
-        )}
+        <Portfolio />
+        <Contact />
       </main>
     </>
   )
