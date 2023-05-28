@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 // animation variants
 const commitVariants = { 
@@ -55,33 +55,39 @@ const Commits: React.FC<CommitProps> = ({
       window.removeEventListener('resize', handleResize);
     }
   }, []);
+
+  // ref to track when element is in view
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.5, once: true });
       
   return (
-    <div className="w-full">
+    <div ref={ref} className="w-full">
       <p className="ml-2 mr-auto text-sm text-left text-gray-600 md:ml-4">
         contributions in the last year
       </p>
-      <div className={`w-full p-2 border border-gray-600 rounded-md md:p-4 ${mobile ? "half-commits" : "commits"}`}>
-        {commits.map((item, index) => {
-          if (mobile && index > 181) return null;
+      {isInView && (
+        <div className={`w-full p-2 border border-gray-600 rounded-md md:p-4 ${mobile ? "half-commits" : "commits"}`}>
+          {commits.map((item, index) => {
+            if (mobile && index > 181) return null;
 
-          return (
-          <motion.div
-            variants={commitVariants}
-            initial="initial"
-            animate="final"
-            transition={{
-              duration: 3,
-              delay: Math.floor(Math.random() * 10) + 1 * 0.5,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            key={index}
-            className="border border-black rounded-sm aspect-square"
-          ></motion.div>
-          );
-        })}
-      </div>
+            return (
+            <motion.div
+              variants={commitVariants}
+              initial="initial"
+              animate="final"
+              transition={{
+                duration: 3,
+                delay: Math.floor(Math.random() * 10) + 1 * 0.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+              key={index}
+              className="border border-black rounded-sm aspect-square"
+            ></motion.div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

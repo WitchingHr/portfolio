@@ -13,16 +13,16 @@ const Contact = () => {
 
 	// ref to track when element is in view
 	const ref = useRef(null);
-	const isInView = useInView(ref, { amount: 0.5, once: true });
+	const isInView = useInView(ref, { amount: 0.8, once: true });
 
 	return (
 		<ContentSection title="Contact" id="contact">
 			<motion.section
-				ref={ref}
+			 	ref={ref}
 				initial={{ opacity: 0 }}
 				animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-				transition={{ duration: 1, ease: "easeIn" }}
-				className="z-0 flex flex-col items-center text-center text-white sm-contact-section md:contact-section sm-section-container md:section-container perspective"
+				transition={{ duration: 0.5 }}
+				className="z-0 flex flex-col items-center w-full h-screen text-center text-white sm-contact-section md:contact-section sm-section-container md:section-container perspective"
 			>
 				<div
 					className="flex flex-col items-start mr-auto text-left"
@@ -34,7 +34,7 @@ const Contact = () => {
 							<span>@GMAIL.COM</span>
 						</h1>
 					</a>
-					
+				
 					{/* subheading */}
 					<h2 className="text-lg text-left text-white text-opacity-50 xs:text-2xl md:text-3xl">
 						Reach out for collaboration or just to chat!
@@ -42,8 +42,9 @@ const Contact = () => {
 				</div>
 
 				{/* browser */}
-				<Browser />
-
+				{isInView && (
+					<Browser />
+				)}
 			</motion.section>
 		</ContentSection>
 	);

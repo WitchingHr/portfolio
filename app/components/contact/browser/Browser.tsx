@@ -1,6 +1,7 @@
 "use client"
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 import Tab from "./Tab";
 import AddressBar from "./AddressBar";
@@ -14,11 +15,9 @@ import arrow from "../../../assets/svg/arrow.svg";
 const Browser = () => {
 	const [activeTab, setActiveTab] = useState<number>(1);
 
-	const mobileRef = useRef<boolean>(window.innerWidth < 768);
-
 	return (
 		<div
-			className="flex flex-col flex-1 w-full mx-6 mt-6 border border-gray-600 rounded-md parallax bg-slate-950"
+			className="flex flex-col flex-1 w-full mx-6 mt-2 border border-gray-600 rounded-md parallax bg-slate-950"
 		>
 				{/* top row */}
 				<div className="flex h-9">

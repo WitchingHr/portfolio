@@ -6,7 +6,7 @@ import Image from "next/image";
 // renders a browser window with a LinkedIn profile
 const Linkedin = () => {
 	return (
-		<div className="flex flex-col flex-1 gap-4 p-4 md:p-6 md:gap-8 md:flex-row rounded-b-md browser-gradient">
+		<div className="flex flex-col flex-1 gap-4 p-2 sm:p-4 md:p-6 md:gap-8 md:flex-row rounded-b-md browser-gradient">
 			<div className="flex flex-row items-center w-1/5 gap-4 md:gap-0 md:items-start md:flex-col">
 				{/* profile pic */}
 				<a
