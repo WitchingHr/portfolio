@@ -1,18 +1,20 @@
-"use client"
+"use client";
+
+import URL from "./URL";
 
 // props
 interface AddressBarProps {
 	activeTab: number;
 }
 
-// AddressBar:
+// AddressBar
 // contains the address bar for the browser with a link to my contact information
 const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 	return (
 		<div className="flex items-center px-2 py-1 xs:py-1 xs:px-1 bg-slate-800">
-
 			{/* nav buttons */}
 			<div className="flex items-center gap-2 pr-3 xs:px-3">
+				{/* back */}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -29,6 +31,7 @@ const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 					></path>
 				</svg>
 
+				{/* forwards */}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -45,6 +48,7 @@ const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 					></path>
 				</svg>
 
+				{/* refresh */}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -64,6 +68,7 @@ const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 
 			{/* url */}
 			<div className="flex items-center flex-1 px-3 py-1 my-1 overflow-hidden text-sm text-left rounded-md bg-slate-950">
+				{/* secure */}
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -79,18 +84,26 @@ const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 						d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
 					></path>
 				</svg>
+
+				{/* url link */}
 				{activeTab === 1 ? (
-					<a className="flex-1 truncate gradient" href="https://www.github.com/WitchingHr/" target="_blank">
-						www.github.com/WitchingHr
-					</a>
+					<URL
+						href="https://www.github.com/WitchingHr/"
+						url="www.github.com/WitchingHr"
+						tabIndex={0}
+					/>
 				) : activeTab === 2 ? (
-					<a className="flex-1 truncate gradient" href="https://linkedin.com/in/WitchingHr/" target="_blank">
-						www.linkedin.com/in/WitchingHr
-					</a>
+					<URL
+						href="https://linkedin.com/in/WitchingHr/"
+						url="www.linkedin.com/in/WitchingHr"
+						tabIndex={1}
+					/>
 				) : (
-					<a className="flex-1 truncate gradient" href="https://discordapp.com/users/WitchingHr#8079/" target="_blank">
-						www.discordapp.com/users/WitchingHr#8079
-					</a>
+					<URL
+						href="https://discordapp.com/users/WitchingHr#8079/"
+						url="www.discordapp.com/users/WitchingHr#8079"
+						tabIndex={2}
+					/>
 				)}
 
 				{/* bookmark star */}
@@ -110,11 +123,11 @@ const AddressBar: React.FC<AddressBarProps> = ({ activeTab }) => {
 				</svg>
 			</div>
 
-      {/* kebab menu */}
+			{/* kebab menu */}
 			<svg
 				className="hidden pl-1 text-gray-600 xs:block"
 				stroke="currentColor"
-        strokeWidth="10"
+				strokeWidth="10"
 				height="24"
 				viewBox="0 0 100 100"
 				xmlns="http://www.w3.org/2000/svg"

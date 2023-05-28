@@ -1,9 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
-
-// components
 import HoverLink from "../common/HoverLink";
 import Arrow from "../common/Arrow";
 
@@ -40,34 +40,26 @@ const Project: React.FC<ProjectProps> = ({
 	img2,
 	children,
 }) => {
-
 	// image state for hover effect
 	const [showBottomImage, setShowBottomImage] = useState(false);
+
+	// opacity styles for images based on hover state
 	const topStyle = showBottomImage ? "opacity-0" : "opacity-100";
 	const bottomStyle = showBottomImage ? "opacity-100" : "opacity-0";
 
-	// ref to track when element is in view
+	// ref to track when project is in view for animation
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true });
 
-	// animation controls
-	const controls = useAnimation();
-	useEffect(() => {
-		if (isInView) {
-			controls.start("visible");
-		}
-	}, [isInView, controls]);
-
 	return (
 		<motion.div
-		 	ref={ref}
+			ref={ref}
 			initial="hidden"
-			animate={controls}
+			animate={isInView ? "visible" : "hidden"}
 			variants={variants}
 			transition={{ duration: 0.5, ease: "easeOut" }}
 		>
 			<div className="flex flex-col h-full">
-
 				{/* project title and subheading */}
 				<div>
 					<h1 className="text-4xl font-semibold text-left gradient">{title}</h1>
@@ -78,7 +70,6 @@ const Project: React.FC<ProjectProps> = ({
 
 				{/* flex container for images and project info */}
 				<div className="flex flex-col gap-8 mt-6 mb-auto xl:flex-row">
-
 					{/* image container, links to live preview */}
 					<div className="min-w-[55%] flex flex-col">
 						<a
@@ -89,29 +80,47 @@ const Project: React.FC<ProjectProps> = ({
 							className="relative h-auto my-auto aspect-video"
 						>
 							{/* top image */}
-							<Image src={img1} alt="" fill className={`object-cover rounded-md duration-300 ` + topStyle} />
+							<Image
+								src={img1}
+								alt="screenshot of project"
+								fill
+								className={`object-cover rounded-md duration-300 ` + topStyle}
+							/>
 							{/* top image blurred, sits behind image to create blur effect */}
 							<Image
 								src={img1}
 								alt=""
 								fill
-								className={"absolute -z-10 image-blur object-cover rounded-md duration-300 " + topStyle}
+								aria-hidden="true"
+								className={
+									"absolute -z-10 image-blur object-cover rounded-md duration-300 " +
+									topStyle
+								}
 							/>
 							{/* bottom image */}
-							<Image src={img2} alt="" fill className="absolute object-cover rounded-md -z-20" />
+							<Image
+								src={img2}
+								alt=""
+								fill
+								aria-hidden="true"
+								className="absolute object-cover rounded-md -z-20"
+							/>
 							{/* bottom image blurred, sits behind image to create blur effect */}
 							<Image
 								src={img2}
 								alt=""
 								fill
-								className={"absolute object-cover rounded-md -z-30 image-blur duration-300 " + bottomStyle}
+								aria-hidden="true"
+								className={
+									"absolute object-cover rounded-md -z-30 image-blur duration-300 " +
+									bottomStyle
+								}
 							/>
 						</a>
 					</div>
 
 					{/* project information */}
 					<div className="flex flex-col justify-between gap-6">
-						
 						{/* summary */}
 						<div>
 							<h2 className="text-4xl font-semibold text-left">Summary</h2>
@@ -122,7 +131,6 @@ const Project: React.FC<ProjectProps> = ({
 
 						{/* flex container for stack and date */}
 						<div className="flex flex-row gap-6">
-
 							{/* tech stack */}
 							<div className="flex-1">
 								<h2 className="text-2xl font-semibold text-left">
@@ -144,7 +152,6 @@ const Project: React.FC<ProjectProps> = ({
 
 						{/* project links */}
 						<div className="flex flex-row gap-6">
-							
 							{/* github link */}
 							<a
 								href={code}
@@ -156,7 +163,7 @@ const Project: React.FC<ProjectProps> = ({
 								</HoverLink>
 								<Arrow />
 							</a>
-							
+
 							{/* live preview link */}
 							<a
 								href={live}

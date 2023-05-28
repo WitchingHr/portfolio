@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
   color: white;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
   overflow-x: hidden;
   min-width: 320px;
 }
@@ -37,8 +34,21 @@ body {
   .sm-contact-section {
     height: calc(100vh - 120px);
   }
-
 }
+
+.perspective {
+  perspective: 320px;
+}
+
+.image-blur {
+  filter: blur(10px);
+}
+
+.social {
+  height: 36px;
+}
+
+/* commits */
 
 .commits {
   display: grid;
@@ -48,14 +58,7 @@ body {
 .half-commits {
   display: grid;
   grid-template-columns: repeat(26, 1fr);
-}
-
-.browser-gradient {
-  background: linear-gradient(180deg, #020617, #1e293b);
-}
-
-.perspective {
-  perspective: 320px;
+  grid-template-rows: repeat(5, 1fr);
 }
 
 /* HoverHeading */
@@ -116,11 +119,13 @@ body {
   transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.hover-heading:hover h1 span {
+.hover-heading:hover h1 span,
+.hover-heading:focus h1 span {
   transform: translate3d(-200%, 0, 0);
 }
 
-.hover-heading:hover .hover-blur {
+.hover-heading:hover .hover-blur,
+.hover-heading:focus .hover-blur {
   filter: blur(50px);
   opacity: 0;
 }
@@ -175,7 +180,8 @@ body {
   opacity: 0;
 }
 
-.url:hover,
+/* gradients */
+
 .gradient {
   background: linear-gradient(
     to right,
@@ -225,13 +231,11 @@ body {
   background: linear-gradient(180deg, black, transparent);
 }
 
-.footer-gradient {
-  background: linear-gradient(0deg, black, transparent);
+.browser-gradient {
+  background: linear-gradient(180deg, #020617, #1e293b);
 }
 
-.image-blur {
-  filter: blur(10px);
-}
+/* animations */
 
 @keyframes gradient-infinite {
   0% {
@@ -242,22 +246,8 @@ body {
   }
 }
 
-.blur-out {
-  animation: blur-out 1s ease-in-out forwards;
-}
-
-@keyframes blur-out {
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    filter: blur(200px);
-    opacity: 0;
-  }
-}
-
 .blur-in {
-  animation: blur-in 0.5s ease-in-out forwards;
+  animation: blur-in 0.7s ease-in-out forwards;
 }
 
 @keyframes blur-in {
@@ -273,9 +263,7 @@ body {
   }
 }
 
-.social {
-  height: 36px;
-}
+/* tabs */
 
 .active::before {
   content: '';

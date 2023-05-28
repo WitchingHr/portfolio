@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -11,7 +11,6 @@ interface FadeProps {
 // Fade
 // animates children as they near the top or bottom of the screen
 const Fade: React.FC<FadeProps> = ({ children }) => {
-
 	// for triggering re-render on window resize
 	const [mobile, setMobile] = useState<boolean>(false);
 
@@ -41,18 +40,18 @@ const Fade: React.FC<FadeProps> = ({ children }) => {
 				// re-render
 				setMobile(false);
 			}
-		}
+		};
 
 		// event listener
-		window.addEventListener('resize', handleResize);
+		window.addEventListener("resize", handleResize);
 		return () => {
-			window.removeEventListener('resize', handleResize);
-		}
+			window.removeEventListener("resize", handleResize);
+		};
 	}, []);
 
 	// ref to track scroll
-	const ref = useRef<HTMLDivElement>(null);
-	const { scrollYProgress } = useScroll({ target: ref });
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({ target: scrollRef });
 
 	// animations
 	// fades out as the element nears the top or bottom of the screen
@@ -79,15 +78,14 @@ const Fade: React.FC<FadeProps> = ({ children }) => {
 	// if mobile, fade in and out
 	if (windowRef.current && windowRef.current < 768) {
 		return (
-			<motion.div ref={ref} style={{ opacity }}>
+			<motion.div ref={scrollRef} style={{ opacity }}>
 				{children}
 			</motion.div>
 		);
-
 	} else {
 		// if desktop, fade in and out, scale up, and tilt
 		return (
-			<motion.div ref={ref} style={{ opacity, scale, rotateX }}>
+			<motion.div ref={scrollRef} style={{ opacity, scale, rotateX }}>
 				{children}
 			</motion.div>
 		);

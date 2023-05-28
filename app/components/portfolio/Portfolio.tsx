@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -6,11 +6,10 @@ import { motion, useInView } from "framer-motion";
 import Project from "./Project";
 import ContentSection from "../sections/content/ContentSection";
 
-// Portfolio:
+// Portfolio
 // contains a list of projects with links to code and live sites
 const Portfolio = () => {
-
-	// ref to track when element is in view
+	// ref to track when section is in view
 	const ref = useRef(null);
 	const isInView = useInView(ref, { amount: 0.1, once: true });
 
@@ -20,6 +19,7 @@ const Portfolio = () => {
 				ref={ref}
 				className="z-0 flex flex-col items-center gap-20 text-center text-white sm-section-container md:section-container"
 			>
+				{/* animate first project when section in view */}
 				<motion.div
 					initial={{ opacity: 0, y: 200 }}
 					animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 200 }}
@@ -38,11 +38,11 @@ const Portfolio = () => {
 						img2={"/images/FB1.png"}
 					>
 						<>
-							A meticulously replicated Facebook interface that supports essential
-							features including user authentication, friending capabilities, post
-							creation, photo uploads, engagement with posts via likes and
-							comments, profile customization, and a dark mode option for enhanced
-							user experience.
+							A meticulously replicated Facebook interface that supports
+							essential features including user authentication, friending
+							capabilities, post creation, photo uploads, engagement with posts
+							via likes and comments, profile customization, and a dark mode
+							option for enhanced user experience.
 						</>
 					</Project>
 				</motion.div>
@@ -85,7 +85,7 @@ const Portfolio = () => {
 					</>
 				</Project>
 
-				<Project
+				{/* <Project
 					title={"Dreaming Spanish"}
 					subtitle={"Dreaming Spanish clone"}
 					tech={"React, TypeScript, NextJS"}
@@ -101,7 +101,7 @@ const Portfolio = () => {
 						the original website, including its responsive design for mobile
 						devices.
 					</>
-				</Project>
+				</Project> */}
 			</section>
 		</ContentSection>
 	);

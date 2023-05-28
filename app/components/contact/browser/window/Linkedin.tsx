@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 
-// Linkedin:
+// Linkedin
 // renders a browser window with a LinkedIn profile
 const Linkedin = () => {
 	return (
@@ -13,6 +13,7 @@ const Linkedin = () => {
 					href="http://linkedin.com/in/WitchingHr"
 					target="_blank"
 					className="relative w-[70px] md:w-full max-w-[200px] h-[70px] md:h-auto aspect-square"
+					tabIndex={1}
 				>
 					<Image
 						src={"/images/linkedin.jpeg"}
@@ -36,26 +37,29 @@ const Linkedin = () => {
 			<div className="flex flex-col flex-1">
 				{/* about */}
 				<div className="flex flex-col gap-4 p-2 border border-gray-600 rounded-md md:p-4">
-					{/* header and bio */}
 					<div>
+						{/* about heading */}
 						<h2 className="font-bold text-left">About</h2>
+						{/* bio */}
 						<p className="mt-1 text-sm text-left">
-							As a diligent and proficient Full Stack Developer, I place
-							paramount importance on delivering superior quality work. My
-							inherent enthusiasm for continuous learning and advancement
-							underpins my approach to all professional endeavors. Highly
-							organized, I pride myself on writing clean, comprehensible code,
-							ensuring efficient and maintainable solutions. I&#39;m adept at
-							resolving complex problems, driven by a commitment to exceed
-							project expectations. Complementing these technical skills is my
-							collaborative nature, making me a reliable and congenial team
-							member.
+							As a diligent and motivated Full Stack Developer, I enjoy
+							delivering top-notch work. I&#39;ve always been the kind of person
+							who loves learning new things and pushing myself to grow, so that
+							naturally translates into my professional life. I like to keep
+							things neat and tidy, which you&#39;ll see in my clean,
+							easy-to-read code and efficient solutions that are easy to
+							maintain. When it comes to tough problems, I&#39;ve got a knack
+							for untangling them, and I always strive to make sure projects
+							turn out better than expected. In addition, I&#39;m quite adept
+							when it comes to teamwork. I&#39;m the kind of person you can rely
+							on to get along well with the team and help everyone shine.
 						</p>
 					</div>
 
 					{/* top skills */}
 					<div className="flex flex-col flex-1 p-2 border border-gray-600 rounded-md md:p-4">
 						<div className="flex flex-row gap-2">
+							{/* icon */}
 							<svg
 								className="shrink-0"
 								xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +71,8 @@ const Linkedin = () => {
 							>
 								<path d="M7.6 4.4L6 .5 4.4 4.4.5 6l3.9 1.6L6 11.5l1.6-3.9L11.5 6zM19.6 8.4L18 4.5l-1.6 3.9-3.9 1.6 3.9 1.6 1.6 3.9 1.6-3.9 3.9-1.6zM11.6 16.4L10 12.5l-1.6 3.9L4.5 18l3.9 1.6 1.6 3.9 1.6-3.9 3.9-1.6z"></path>
 							</svg>
+
+							{/* skills list */}
 							<div>
 								<h2 className="font-bold text-left">Top Skills</h2>
 								<ul className="flex flex-wrap gap-1 mt-1 text-sm">

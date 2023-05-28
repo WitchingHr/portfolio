@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
@@ -26,10 +26,9 @@ interface WindowProps {
 	activeTab: number;
 }
 
-// Window:
+// Window
 // renders a browser window
 const Window: React.FC<WindowProps> = ({ activeTab }) => {
-
 	// array of 364 nulls for github commits
 	const commits = useMemo(() => new Array(364).fill(null), []);
 

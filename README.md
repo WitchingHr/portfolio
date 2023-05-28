@@ -1,14 +1,3 @@
-# TODO:
+## Portfolio
 
-## ThreeJS
-- [ ] Add ThreeJS to home page
-
-## a11y
-- [ ] Add a11y support
-- [ ] Check tab order
-
-## Unit Tests
-- [ ] Add unit tests
-
-## Deployment
-- [ ] Deploy
+Personal project portfolio built with React, Next.js, Tailwind CSS and Framer Motion.

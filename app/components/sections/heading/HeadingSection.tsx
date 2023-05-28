@@ -1,6 +1,5 @@
-"use client"
+"use client";
 
-// components
 import Fade from "./Fade";
 
 // props
@@ -9,14 +8,10 @@ interface HeadingSectionProps {
 	children: React.ReactNode;
 }
 
-// Section:
+// Section
 // main section component
-// shows heading that can be clicked on to show content
-const HeadingSection: React.FC<HeadingSectionProps> = ({
-	id,
-	children,
-}) => {
-
+// shows heading that fades in
+const HeadingSection: React.FC<HeadingSectionProps> = ({ id, children }) => {
 	return (
 		<section
 			id={id}

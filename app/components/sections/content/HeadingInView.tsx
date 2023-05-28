@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
@@ -10,19 +10,20 @@ const variants = {
 	visible: { width: "100%", transition: { duration: 0.5 } },
 };
 
+// props
 interface HeadingInViewProps {
 	children: React.ReactNode;
 }
 
-// HeadingInView:
-// animates heading and hr as they enter viewport
+// HeadingInView
+// animates heading hr as it enters view
 const HeadingInView: React.FC<HeadingInViewProps> = ({ children }) => {
-
-	// ref to track when element is in view
+	// ref to track when heading is in view
 	const ref = useRef(null);
 	const isInView = useInView(ref, { amount: 0.3 });
 
 	// animation controls
+	// animate when in view and reset when out of view
 	const controls = useAnimation();
 	useEffect(() => {
 		if (isInView) {
