@@ -4,17 +4,15 @@ import Fade from "./Fade";
 
 // props
 interface HeadingSectionProps {
-	id?: string;
 	children: React.ReactNode;
 }
 
 // Section
 // main section component
 // shows heading that fades in
-const HeadingSection: React.FC<HeadingSectionProps> = ({ id, children }) => {
+const HeadingSection: React.FC<HeadingSectionProps> = ({ children }) => {
 	return (
 		<section
-			id={id}
 			className="relative z-40 flex flex-col items-center justify-center h-screen text-center text-white perspective sm-section-container md:section-container"
 		>
 			<Fade>{children}</Fade>

@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
 
+// props
 interface FadeProps {
 	children: React.ReactNode;
 }
@@ -11,43 +12,6 @@ interface FadeProps {
 // Fade
 // animates children as they near the top or bottom of the screen
 const Fade: React.FC<FadeProps> = ({ children }) => {
-	// for triggering re-render on window resize
-	const [mobile, setMobile] = useState<boolean>(false);
-
-	// ref to track window width
-	const windowRef = useRef<number>(window.innerWidth);
-
-	useEffect(() => {
-		// get window width
-		windowRef.current = window.innerWidth;
-
-		// update window width on resize
-		const handleResize = () => {
-			windowRef.current = window.innerWidth;
-
-			if (windowRef.current < 768) {
-				setMobile(true);
-			}
-
-			// check if mobile
-			if (windowRef.current < 768) {
-				// re-render
-				setMobile(true);
-			}
-
-			// check if desktop
-			if (windowRef.current > 768) {
-				// re-render
-				setMobile(false);
-			}
-		};
-
-		// event listener
-		window.addEventListener("resize", handleResize);
-		return () => {
-			window.removeEventListener("resize", handleResize);
-		};
-	}, []);
 
 	// ref to track scroll
 	const scrollRef = useRef<HTMLDivElement>(null);
@@ -61,35 +25,14 @@ const Fade: React.FC<FadeProps> = ({ children }) => {
 		[0, 1, 1, 0]
 	);
 
-	// scales up as the element nears the top or bottom of the screen
-	const scale = useTransform(
-		scrollYProgress,
-		[0, 0.33, 0.66, 1],
-		[1.5, 1, 1, 1.5]
+	return (
+		<motion.div
+			ref={scrollRef}
+			style={{ opacity }}
+		>
+			{children}
+		</motion.div>
 	);
-
-	// tilt as the element nears the top or bottom of the screen
-	const rotateX = useTransform(
-		scrollYProgress,
-		[0, 0.33, 0.66, 1],
-		[-45, 0, 0, 45]
-	);
-
-	// if mobile, fade in and out
-	if (windowRef.current && windowRef.current < 768) {
-		return (
-			<motion.div ref={scrollRef} style={{ opacity }}>
-				{children}
-			</motion.div>
-		);
-	} else {
-		// if desktop, fade in and out, scale up, and tilt
-		return (
-			<motion.div ref={scrollRef} style={{ opacity, scale, rotateX }}>
-				{children}
-			</motion.div>
-		);
-	}
 };
 
 export default Fade;
