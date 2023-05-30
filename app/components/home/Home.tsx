@@ -12,10 +12,6 @@ const Home = () => {
 		<main>
 			{/* Hero: */}
 			<HeadingSection>
-				{/* <h1 className="text-6xl font-bold">
-            Matt Thomas
-          </h1>
-          <h2 className="text-2xl gradient">Full Stack Developer</h2> */}
 				<HoverHeading alt="💪💪💪💪💪💪💪💪" sub="Full Stack Developer">
 					Matt Thomas
 				</HoverHeading>

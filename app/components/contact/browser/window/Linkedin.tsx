@@ -16,7 +16,7 @@ const Linkedin = () => {
 					tabIndex={1}
 				>
 					<Image
-						src={"/images/linkedin.jpeg"}
+						src={"/images/linkedin_avatar.jpeg"}
 						alt="linkedIn profile picture"
 						fill
 						className="rounded-[50%] object-cover"
@@ -43,16 +43,18 @@ const Linkedin = () => {
 						{/* bio */}
 						<p className="mt-1 text-sm text-left">
 							As a diligent and motivated Full Stack Developer, I enjoy
-							delivering top-notch work. I&#39;ve always been the kind of person
-							who loves learning new things and pushing myself to grow, so that
+							delivering top-notch work. I&apos;ve always been the kind of person who
+							loves learning new things and pushing myself to grow, so that
 							naturally translates into my professional life. I like to keep
-							things neat and tidy, which you&#39;ll see in my clean,
-							easy-to-read code and efficient solutions that are easy to
-							maintain. When it comes to tough problems, I&#39;ve got a knack
-							for untangling them, and I always strive to make sure projects
-							turn out better than expected. In addition, I&#39;m quite adept
-							when it comes to teamwork. I&#39;m the kind of person you can rely
-							on to get along well with the team and help everyone shine.
+							things neat and tidy, which you&apos;ll see in my clean, easy-to-read
+							code and efficient solutions that are easy to maintain. I am a
+							natural problem-solver so when it comes to complex issues, I&apos;ve
+							got a talent for resolving them. I consistently aim to elevate the
+							standards of projects, often possessing a clear vision for
+							potential improvements. In addition, given my professional history
+							onboard ships, where dependability is paramount, I&apos;ve developed a
+							strong aptitude for teamwork. I&apos;m the kind of person you can rely
+							on to get along well with the team and bring value to the table.
 						</p>
 					</div>
 
