@@ -68,7 +68,7 @@ const Portfolio = () => {
 					</>
 				</Project>
 
-				<Project
+				{/* <Project
 					title={"AT Your Service - Professional Painting"}
 					subtitle={"Professional Website for Small Painting Business"}
 					tech={"React, TypeScript, Firebase, Framer Motion, Vite"}
@@ -83,7 +83,7 @@ const Portfolio = () => {
 						engaging showcase of images, comprehensive business information, and
 						a contact form to facilitate communication with potential customers.
 					</>
-				</Project>
+				</Project> */}
 
 				{/* <Project
 					title={"Dreaming Spanish"}
